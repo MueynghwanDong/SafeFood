@@ -19,8 +19,10 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.ssafy.safefood.dto.Board;
 import com.ssafy.safefood.dto.Member;
+import com.ssafy.safefood.dto.Qna;
 import com.ssafy.safefood.service.BoardService;
 import com.ssafy.safefood.service.MemberService;
+import com.ssafy.safefood.service.QnaService;
 
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
@@ -30,6 +32,9 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/api")
 @Slf4j
 public class FoodRestController {
+
+	@Autowired
+	QnaService qservice;
 
 	@Autowired
 	BoardService bservice;
@@ -53,15 +58,27 @@ public class FoodRestController {
 			System.out.println(id);
 			Member member = mservice.searchMember(id);
 			System.out.println(member);
-			if(member==null) {
+			if (member == null) {
 				return new ResponseEntity<Object>(false, HttpStatus.CONFLICT);
-			}else {
+			} else {
 				return new ResponseEntity<Object>(true, HttpStatus.OK);
 			}
-			
-			
+
 		} catch (RuntimeException e) {
 			log.error("checkLogin", e);
+			throw e; //
+		}
+	}
+
+	@GetMapping("/findAllQna")
+	@ApiOperation(value = "Qna 조회")
+	public ResponseEntity<Object> findAllQna() throws Exception {
+		log.trace("findAllQna");
+		try {
+			List<Qna> qnas = qservice.qselect();
+			return new ResponseEntity<Object>(qnas, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			log.error("findAllQna", e);
 			throw e; //
 		}
 	}
@@ -130,7 +147,7 @@ public class FoodRestController {
 			throw e; //
 		}
 	}
-	
+
 	@PutMapping("/BoardBUpdate")
 	@ApiOperation(value = "정보 수정")
 	public ResponseEntity<Object> bupdateBoard(@RequestBody Board board) throws Exception {

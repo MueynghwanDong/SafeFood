@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssafy.mapper.QnaMapper">
+
+	<insert id="insert">
+		insert into qna(title,content,qwriter,qregdate)
+		values(#{title},#{content},#{qwriter},now())
+	</insert>
+
+	<update id="update" parameterType="qna">
+		update qna set title=#{title}, content=#{content} where qnaid=#{qnaid}
+	</update>
+
+	<delete id="delete">
+		delete from qna where qnaid =#{qnaid}
+	</delete>
+
+	<select id="select">
+		select * from qna
+	</select>
+	<select id="selectone">
+		select * from qna where qnaid=#{qnaid}
+	</select>
+
+	<update id="aupdate" parameterType="qna">
+		update qna set content=#{content}, aregdate=now() where qnaid=#{qnaid}
+	</update>
+
+	<update id="adelete" parameterType="qna">
+		update qna set content=null where aregdate = null where qnaid=#{qnaid}
+	</update>
+
+	<select id="search" parameterType="String">
+		select * from qna where content like CONCAT('%',#{keyword}, '%') or title like CONCAT('%',#{keyword}, '%');
+	</select>
+	
+	<select id="searchwriter" parameterType="String">
+		select * from qna where qwriter like CONCAT('%',#{writer}, '%') or awriter like CONCAT('%',#{writer}, '%');
+	</select>
+
+</mapper>
