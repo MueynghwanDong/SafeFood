@@ -87,61 +87,62 @@ let moveFoodInfo = (code) => {
 }
 
 $("#view").on("click", ()=>{
-//	location.href="./foodsortlist.do";
-    $.ajax({
-        url:"foodsortlist.do",
-        type:"post",
-        data:"",
-        dataType:"json",
-        success:(res)=>{
-        	$("#print").html("");
-        	for(key in res){
-        		let t = res[key];
-        		console.log(t);
+ 	location.href="./foodsortlist.do";
+//     $.ajax({
+//         url:"foodsortlist.do",
+//         method:"get",
+//         data:"",
+//         // dataType:"json",
+//         success:function(res){
+//          	console.log(res);
+//         	 $("#print").html("");
+//         	for(key in res){
+//         		let t = res[key];
+//         		console.log(t);
         		
-        		//div
-        		let divrow = document.createElement("div");	
-        		divrow.className = "row";
+//         		//div
+//         		let divrow = document.createElement("div");	
+//         		divrow.className = "row";
 
-        		let div3 = document.createElement("div");
-        		div3.className = "col-md-3";
-        		div3.innerHTML = '<img src="'+ t.img +'" height="200px" width="200px" />';
+//         		let div3 = document.createElement("div");
+//         		div3.className = "col-md-3";
+//         		div3.innerHTML = '<img src="'+ t.img +'" height="200px" width="200px" />';
         		
-        		let div9 = document.createElement("div");	
-				div9.className = "col-md-9";    
+//         		let div9 = document.createElement("div");	
+// 				div9.className = "col-md-9";    
 				
-				//테이블
-				let foodtable = document.createElement("table");
-				foodtable.className="table";
+// 				//테이블
+// 				let foodtable = document.createElement("table");
+// 				foodtable.className="table";
 				
-				foodtable.onclick = () => {moveFoodInfo(t.code)};
-				console.log(t.code);
+// 				foodtable.onclick = () => {moveFoodInfo(t.code)};
+// 				console.log(t.code);
 				
-				let tr1 = document.createElement("tr");
-				let tr2 = document.createElement("tr");
+// 				let tr1 = document.createElement("tr");
+// 				let tr2 = document.createElement("tr");
 				
-				let td1 = document.createElement("td");
-				td1.innerHTML = '<h3 class="high_light">'+t.name+'</h3><span><b>'+t.maker+'</b></span><span class="fly">&nbsp;'+t.frequency+'</span><span class="glyphicon glyphicon-eye-open fly"></span>';
+// 				let td1 = document.createElement("td");
+// 				td1.innerHTML = '<h3 class="high_light">'+t.name+'</h3><span><b>'+t.maker+'</b></span><span class="fly">&nbsp;'+t.frequency+'</span><span class="glyphicon glyphicon-eye-open fly"></span>';
 
-				let td2 = document.createElement("td");
-				td2.innerHTML = t.material;
+// 				let td2 = document.createElement("td");
+// 				td2.innerHTML = t.material;
 				
-				tr1.appendChild(td1);
-				tr2.appendChild(td2);
+// 				tr1.appendChild(td1);
+// 				tr2.appendChild(td2);
 				
-				foodtable.appendChild(tr1);
-				foodtable.appendChild(tr2);
+// 				foodtable.appendChild(tr1);
+// 				foodtable.appendChild(tr2);
 				
-				div9.appendChild(foodtable);
+// 				div9.appendChild(foodtable);
 				
-				divrow.appendChild(div3);
-				divrow.appendChild(div9);
+// 				divrow.appendChild(div3);
+// 				divrow.appendChild(div9);
         		
-        		$("#print").append(divrow);
-        	}
-        },
-        error:()=>{}
-    });	
+//         		$("#print").append(divrow); 
+//         	 } 
+//         },
+//         error:()=>{}
+//     });	
 	
 	
 })

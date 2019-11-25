@@ -50,4 +50,6 @@ public interface FoodDao {
 
 	int insertEat(Eat eat);
 	
+	public List<Food> searchview();
+	
 }

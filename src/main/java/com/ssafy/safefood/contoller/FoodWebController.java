@@ -247,40 +247,11 @@ public class FoodWebController {
 	@GetMapping("/foodsortlist.do")
 	public String FoodSortList(String stype, String word, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) {
-		String sort = (String) session.getAttribute("sort");
+		List<Food>foods = fs.searchview();
+		session.setAttribute("foods", foods);
+		System.out.println(foods);
 
-		System.out.println("정렬 여부" + sort);
-		session.setAttribute("sort", "false");
-
-		if (stype == null) {
-			stype = "all";
-		}
-		if (word == null) {
-			word = "";
-		}
-
-		List<Food> f = fs.searchAll(new FoodPageBean(stype, word, "", ""));
-
-		quickSort(f, 0, f.size() - 1);
-
-		System.out.println("FoodList 호출");
-		request.setAttribute("foods", f);
-
-//		HttpSession session = request.getSession();
-		session.setAttribute("foods", f);
-		session.setAttribute("data", "true");
-
-		Gson gson = new Gson();
-
-		System.out.println(gson.toJson(f));
-		response.setContentType("application/json;charset=utf-8");
-		try {
-			response.getWriter().append(gson.toJson(f));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return "none:foodlist";
+		return "foodlist";
 	}
 
 	@GetMapping("/foodview.do")
