@@ -4,7 +4,10 @@ import java.util.List;
 
 import com.ssafy.safefood.dto.Qna;
 
+
+
 public interface QnaService {
+	
 	public int regitser(Qna qna)throws Exception;
 	
 	public int update(Qna qna)throws Exception;

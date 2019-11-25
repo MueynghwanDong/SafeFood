@@ -34,13 +34,13 @@ import lombok.extern.slf4j.Slf4j;
 public class FoodRestController {
 
 	@Autowired
-	QnaService qservice;
-
-	@Autowired
 	BoardService bservice;
 
 	@Autowired
 	MemberService mservice;
+
+	@Autowired
+	QnaService qservice;
 
 	private ResponseEntity<Map<String, Object>> response(Object data, HttpStatus httpStatus, boolean status) {
 		Map<String, Object> resultMap = new HashMap<>();
@@ -79,6 +79,109 @@ public class FoodRestController {
 			return new ResponseEntity<Object>(qnas, HttpStatus.OK);
 		} catch (RuntimeException e) {
 			log.error("findAllQna", e);
+			throw e; //
+		}
+	}
+
+	@GetMapping("/findDetailQnA/{qnaid}")
+	@ApiOperation(value = "Qna 상세 조회", response = Integer.class)
+	public ResponseEntity<Object> findDetailQna(@PathVariable int qnaid) throws Exception {
+		log.trace("findDetailQnA");
+		try {
+			Qna qna = qservice.selectone(qnaid);
+			return new ResponseEntity<Object>(qna, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			log.error("findDetailQnA", e);
+			throw e; //
+		}
+	}
+
+	@PostMapping("/QnAregist")
+	@ApiOperation(value = "QnA 등록")
+	public ResponseEntity<Object> QnAregist(@RequestBody Qna qna) throws Exception {
+		log.trace("Boardregist: {}", qna);
+		try {
+			int c = qservice.regitser(qna);
+			return new ResponseEntity<Object>(c, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			log.error("QnAregist", e);
+			throw e; //
+		}
+	}
+
+	@DeleteMapping("/QnAdelete/{qnaid}")
+	@ApiOperation(value = "QnA 삭제", response = Integer.class)
+	public ResponseEntity<Object> QnAdelete(@PathVariable int qnaid) throws Exception {
+		log.trace("QnAdelete");
+		try {
+			int c = qservice.delete(qnaid);
+			return new ResponseEntity<Object>(c, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			log.error("QnAdelete", e);
+			throw e; //
+		}
+	}
+
+	@PutMapping("/QnAUpdate")
+	@ApiOperation(value = "정보 수정")
+	public ResponseEntity<Object> QnAUpdate(@RequestBody Qna qna) throws Exception {
+		log.trace("QnAUpdate");
+		try {
+			int c = qservice.update(qna);
+			return new ResponseEntity<Object>(c, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			log.error("QnAUpdate", e);
+			throw e; //
+		}
+	}
+
+	@PutMapping("/AUpdate")
+	@ApiOperation(value = "A 수정")
+	public ResponseEntity<Object> AUpdate(@RequestBody Qna qna) throws Exception {
+		log.trace("AUpdate");
+		try {
+			int c = qservice.aupdate(qna);
+			return new ResponseEntity<Object>(c, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			log.error("AUpdate", e);
+			throw e; //
+		}
+	}
+
+	@PutMapping("/ADelete")
+	@ApiOperation(value = "A 삭제")
+	public ResponseEntity<Object> ADelete(@RequestBody Qna qna) throws Exception {
+		log.trace("ADelete");
+		try {
+			int c = qservice.adelete(qna);
+			return new ResponseEntity<Object>(c, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			log.error("ADelete", e);
+			throw e; //
+		}
+	}
+
+	@GetMapping("/SearchQnA/{keyword}")
+	@ApiOperation(value = "search 조회", response = String.class)
+	public ResponseEntity<Object> SearchQnA(@PathVariable String keyword) throws Exception {
+		log.trace("SearchQnA");
+		try {
+			List<Qna> qnas = qservice.search(keyword);
+			return new ResponseEntity<Object>(qnas, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			log.error("SearchQnA", e);
+			throw e; //
+		}
+	}
+	@GetMapping("/SearchWriterQnA/{writer}")
+	@ApiOperation(value = "search 조회", response = String.class)
+	public ResponseEntity<Object> SearchWriterQnA(@PathVariable String writer) throws Exception {
+		log.trace("SearchWriterQnA");
+		try {
+			List<Qna> qnas = qservice.searchWriter(writer);
+			return new ResponseEntity<Object>(qnas, HttpStatus.OK);
+		} catch (RuntimeException e) {
+			log.error("SearchWriterQnA", e);
 			throw e; //
 		}
 	}

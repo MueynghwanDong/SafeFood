@@ -1,18 +1,29 @@
 package com.ssafy.safefood.dto;
 
-import java.security.Timestamp;
+import java.sql.Date;
 
 public class Qna {
 	private int qnaid;
 	private String title;
 	private String content;
-	private String qwritert;
-	private Timestamp qregdata;
-	private String awritert;
-	private Timestamp aregdata;
-	
-	
-	
+	private String qwriter;
+	private Date qregdate;
+	private String awriter;
+	private Date aregdate;
+	public Qna(int qnaid, String title, String content, String qwriter, Date qregdate, String awriter,
+			Date aregdate) {
+		super();
+		this.qnaid = qnaid;
+		this.title = title;
+		this.content = content;
+		this.qwriter = qwriter;
+		this.qregdate = qregdate;
+		this.awriter = awriter;
+		this.aregdate = aregdate;
+	}
+	public Qna() {
+		super();
+	}
 	public int getQnaid() {
 		return qnaid;
 	}
@@ -31,44 +42,31 @@ public class Qna {
 	public void setContent(String content) {
 		this.content = content;
 	}
-	public String getQwritert() {
-		return qwritert;
+	public String getQwriter() {
+		return qwriter;
 	}
-	public void setQwritert(String qwritert) {
-		this.qwritert = qwritert;
+	public void setQwriter(String qwriter) {
+		this.qwriter = qwriter;
 	}
-	public Timestamp getQregdata() {
-		return qregdata;
+	public Date getQregdate() {
+		return qregdate;
 	}
-	public void setQregdata(Timestamp qregdata) {
-		this.qregdata = qregdata;
+	public void setQregdate(Date qregdate) {
+		this.qregdate = qregdate;
 	}
-	public String getAwritert() {
-		return awritert;
+	public String getAwriter() {
+		return awriter;
 	}
-	public void setAwritert(String awritert) {
-		this.awritert = awritert;
+	public void setAwriter(String awriter) {
+		this.awriter = awriter;
 	}
-	public Timestamp getAregdata() {
-		return aregdata;
+	public Date getAregdate() {
+		return aregdate;
 	}
-	public void setAregdata(Timestamp aregdata) {
-		this.aregdata = aregdata;
+	public void setAregdate(Date aregdate) {
+		this.aregdate = aregdate;
 	}
-	public Qna(int qnaid, String title, String content, String qwritert, Timestamp qregdata, String awritert,
-			Timestamp aregdata) {
+	
+	
 		
-		this.qnaid = qnaid;
-		this.title = title;
-		this.content = content;
-		this.qwritert = qwritert;
-		this.qregdata = qregdata;
-		this.awritert = awritert;
-		this.aregdata = aregdata;
-	}
-	public Qna() {
-	
-	}
-
-	
 }
