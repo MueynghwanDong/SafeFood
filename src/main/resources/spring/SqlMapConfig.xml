@@ -15,11 +15,13 @@
 			alias="nutrition" />
 		<typeAlias type="com.ssafy.safefood.dto.Board" alias="board" />
 		<typeAlias type="com.ssafy.safefood.dto.Qna" alias="qna" />
+		<typeAlias type="com.ssafy.safefood.dto.Jjim" alias="jjim" />
 	</typeAliases>
 	<mappers>
 		<mapper resource="spring/foodmapper.xml" />
 		<mapper resource="spring/membermapper.xml" />
 		<mapper resource="spring/eatmapper.xml" />
+		<mapper resource="spring/jjimmapper.xml" />
 		<mapper resource="spring/boardmapper.xml" />
 		<mapper resource="spring/qnamapper.xml" />
 

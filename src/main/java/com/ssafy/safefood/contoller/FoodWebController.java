@@ -1,6 +1,5 @@
 package com.ssafy.safefood.contoller;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -15,7 +14,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,12 +27,14 @@ import com.ssafy.safefood.dto.Board;
 import com.ssafy.safefood.dto.Eat;
 import com.ssafy.safefood.dto.Food;
 import com.ssafy.safefood.dto.FoodPageBean;
+import com.ssafy.safefood.dto.Jjim;
 import com.ssafy.safefood.dto.Member;
 import com.ssafy.safefood.dto.PageMaker;
 import com.ssafy.safefood.dto.SearchCriteria;
 import com.ssafy.safefood.service.BoardService;
 import com.ssafy.safefood.service.EatService;
 import com.ssafy.safefood.service.FoodService;
+import com.ssafy.safefood.service.JjimService;
 import com.ssafy.safefood.service.MemberService;
 
 @Controller
@@ -54,6 +54,11 @@ public class FoodWebController {
 
 	@Autowired
 	EatService es;
+
+	@Autowired
+	JjimService js;
+
+	private List<Food> foodrr = new ArrayList<Food>();
 
 	/*
 	 * redirect
@@ -240,6 +245,7 @@ public class FoodWebController {
 		}
 
 		List<Food> f = fs.searchAll(new FoodPageBean(stype, word, null, 0));
+		foodrr = f;
 
 		System.out.println("FoodList 호출");
 		request.setAttribute("foods", f);
@@ -385,6 +391,25 @@ public class FoodWebController {
 		}
 
 	}
+	@GetMapping("deletejjim.do")
+	public String deletejjim(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
+		//System.out.println(req.getParameter("idx"));
+		int idx = Integer.parseInt(req.getParameter("idx"));
+		//System.out.println(idx);
+		int result = js.delete(idx);
+		if (result > 0) {
+			System.out.println("삭제 완료");
+			Member temp = (Member) session.getAttribute("member");
+			List<Jjim> myNutri = js.select(temp.getId());
+			//System.out.println(myNutri);
+			req.setAttribute("jjnutri", myNutri);
+			return "redirect:jjim.do";
+		} else {
+			System.out.println("삭제 오류");
+			return "redirect:jjim.do";
+		}
+
+	}
 
 	@PostMapping("/foodsimilar.do")
 	@ResponseBody
@@ -429,22 +454,91 @@ public class FoodWebController {
 		return jString;
 	}
 
+	@GetMapping("/jjim.do")
+	public String MemberjjimFoodController(String code, HttpSession session, HttpServletRequest request) {
+		// 유저 이름하고 먹은 음식 가져오기
+		Member loginuser = (Member) session.getAttribute("member");
+		if (loginuser != null) {
+			List<Jjim> myNutri = js.select(loginuser.getId());
+			System.out.println(myNutri);
+			String myall = loginuser.getAllergy();
+			String[] myalls = myall.split("/");
+			for (int i = 0; i < myNutri.size(); i++) {
+				String foodallery = foodrr.get(myNutri.get(i).getCode() - 1).getAllergy();
+				String[] alls = foodallery.split(",");
+				String myresult = "";
+				outer: for (int j = 0; j < myalls.length; j++) {
+					for (int k = 0; k < alls.length; k++) {
+						if (myalls[j].equals(alls[k])) {
+							myNutri.get(i).setCheck("주의");
+							myresult = myresult + " " + myalls[j];
+						} else if (myalls[j].equals("없음"))
+							continue outer;
+					}
+				}
+				// System.out.println(myresult);
+				myNutri.get(i).setAllergy(myresult);
+			}
+			Food sum = new Food(-1, "", 0l, 0l, 0l, 0l, 0l, 0l, 0l, 0l, 0l, 0l, "", "", "", "", 0, 0);
+
+			for (Jjim j : myNutri) {
+				Food temp = fs.search(j.getCode());
+				int count = j.getAmount();
+//				System.out.println(temp);
+
+				sum.setSupportpereat(Math.round(sum.getSupportpereat() + (temp.getSupportpereat() * count)));
+				sum.setCalory(Math.round(sum.getCalory() + (temp.getCalory() * count)));
+				sum.setCarbo(Math.round(sum.getCarbo() + (temp.getCarbo() * count)));
+				sum.setProtein(Math.round(sum.getProtein() + (temp.getProtein() * count)));
+				sum.setFat(Math.round(sum.getFat() + (temp.getFat() * count)));
+				sum.setSugar(Math.round(sum.getSugar() + (temp.getSugar() * count)));
+				sum.setNatrium(Math.round(sum.getNatrium() + (temp.getNatrium() * count)));
+				sum.setChole(Math.round(sum.getChole() + (temp.getChole() * count)));
+				sum.setFattyacid(Math.round(sum.getFattyacid() + (temp.getFattyacid() * count)));
+				sum.setTransfat(Math.round(sum.getTransfat() + (temp.getTransfat() * count)));
+			}
+
+			request.setAttribute("jjnutri", myNutri);
+			session.setAttribute("jjsummary", sum);
+
+			return "jjim";
+		} else {
+			return "index";
+		}
+	}
+
 	@GetMapping("/membereat.do")
 	public String MemberEatFoodController(String code, HttpSession session, HttpServletRequest request) {
 		// 유저 이름하고 먹은 음식 가져오기
 		Member loginuser = (Member) session.getAttribute("member");
 
-		System.out.println(loginuser);
-
-		System.out.println(code);
+		// System.out.println(loginuser);
+		// System.out.println(code);
 
 		if (loginuser != null) {
 			Member result = ms.eatMember(loginuser.getId());
 			// System.out.println(result.getEatlist());
-			
+
 			// List<Eat> myNutri = result.getEatlist();
 			List<Eat> myNutri = es.select(loginuser.getId());
-
+			String myall = loginuser.getAllergy();
+			String[] myalls = myall.split("/");
+			for (int i = 0; i < myNutri.size(); i++) {
+				String foodallery = foodrr.get(myNutri.get(i).getCode() - 1).getAllergy();
+				String[] alls = foodallery.split(",");
+				String myresult = "";
+				outer: for (int j = 0; j < myalls.length; j++) {
+					for (int k = 0; k < alls.length; k++) {
+						if (myalls[j].equals(alls[k])) {
+							myNutri.get(i).setCheck("주의");
+							myresult = myresult + " " + myalls[j];
+						} else if (myalls[j].equals("없음"))
+							continue outer;
+					}
+				}
+				System.out.println(myresult);
+				myNutri.get(i).setAllergy(myresult);
+			}
 			// System.out.println(myNutri);
 			Food sum = new Food(-1, "", 0l, 0l, 0l, 0l, 0l, 0l, 0l, 0l, 0l, 0l, "", "", "", "", 0, 0);
 
@@ -486,11 +580,35 @@ public class FoodWebController {
 		String id = request.getParameter("idx");
 
 		if (loginuser != null) {
-			Eat temp = new Eat(0, id, code, amount, foodname, null);
+			Eat temp = new Eat(0, id, code, amount, foodname, null, "");
 
 			Member result = ms.eatMember(loginuser.getId());
 			// System.out.println(result.getEatlist());
 			es.insert(temp);
+
+			return "redirect:foodinfo";
+		} else {
+			return "fail";
+		}
+	}
+
+	@PostMapping("/addjjim.do")
+	public String AddJjimFoodController(HttpSession session, HttpServletRequest request) {
+		// 유저 이름하고 먹은 음식 가져오기
+
+		Member loginuser = (Member) session.getAttribute("member");
+
+		int code = Integer.parseInt(request.getParameter("code"));
+		int amount = Integer.parseInt(request.getParameter("count"));
+		String foodname = request.getParameter("foodname");
+		String id = request.getParameter("idx");
+
+		if (loginuser != null) {
+			Jjim temp = new Jjim(0, id, code, amount, foodname, "", "");
+
+			// Member result = ms.eatMember(loginuser.getId());
+			// System.out.println(result.getEatlist());
+			js.insert(temp);
 
 			return "redirect:foodinfo";
 		} else {

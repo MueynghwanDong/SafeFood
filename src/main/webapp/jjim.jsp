@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>제품 상세 정보</title>
+<title>찜한 상품 정보</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -27,7 +27,7 @@
 	<div id="detail">
 		<div id="result" class="container">
 			<h1 class="text-center">
-				<span class="high_light">섭취 식품 영양 정보</span>
+				<span class="high_light">찜한 식품 영양 정보</span>
 			</h1>
 			<br>
 			<div class="row">
@@ -47,7 +47,7 @@
 
 			<br>
 			<h1 class="text-center">
-				<span class="high_light">섭취 내역</span>
+				<span class="high_light">찜한 내역</span>
 			</h1>
 			<br>
 			<div class="container">
@@ -60,7 +60,6 @@
 									<td><span class="high_light"><b>상품코드</b></span></td>
 									<td><span class="high_light"><b>상품명</b></span></td>
 									<td><span class="high_light"><b>수량</b></span></td>
-									<td><span class="high_light"><b>섭취일자</b></span>
 									<td><span class="high_light"><b>알레르기 포함여부</b></span>
 									<td><span class="high_light"><b>삭제</b></span>
 								</tr>
@@ -69,13 +68,12 @@
 								<!-- 	private String id; -->
 								<!-- 	private int code; -->
 								<!-- 	private int amount;							 -->
-								<c:forEach items="${nutri}" var="nutri">
+								<c:forEach items="${jjnutri}" var="nutri">
 									<tr>
 										<td>${nutri.idx}</td>
 										<td>${nutri.code}</td>
 										<td> <a href="foodview.do?code=${nutri.code}">${nutri.foodname}</a></td>
 										<td>${nutri.amount}</td>
-										<td>${nutri.eatday}</td>
 										<td>${nutri.allergy} ${nutri.check} </td>
 										<td><input type="button" value="삭제" onclick="deleteeat(${nutri.idx})"></td>
 									</tr>
@@ -92,34 +90,22 @@
 <script>
 	function deleteeat(idx) {
 		
-		location.href = "./deleteeat.do?idx="+idx;
-// 		console.log(idx);
-// 		$.ajax({
-// 			url:"deleteeat.do?idx="+idx,
-// 			method:"post",
-// 			//data:idx,
-// 			success:function(res){
-// 				 console.log("완료!");
-// 			},
-// 			error:function(e){
-// 				console.log("오류");
-// 				console.log(e);
-// 			}
-// 		});
+		location.href = "./deletejjim.do?idx="+idx;
+
 	}
 	function graphs() {
-		let SERVING_WT = "${summary.supportpereat}";
-		let NUTR_CONT1 = "${summary.calory}";
-		let NUTR_CONT2 = "${summary.carbo}";
-		let NUTR_CONT3 = "${summary.protein}";
-		let NUTR_CONT4 = "${summary.fat}";
-		let NUTR_CONT5 = "${summary.sugar}";
-		let NUTR_CONT6 = "${summary.natrium}";
-		let NUTR_CONT7 = "${summary.chole}";
-		let NUTR_CONT8 = "${summary.fattyacid}";
-		let NUTR_CONT9 = "${summary.transfat}";
+		let SERVING_WT = "${jjsummary.supportpereat}";
+		let NUTR_CONT1 = "${jjsummary.calory}";
+		let NUTR_CONT2 = "${jjsummary.carbo}";
+		let NUTR_CONT3 = "${jjsummary.protein}";
+		let NUTR_CONT4 = "${jjsummary.fat}";
+		let NUTR_CONT5 = "${jjsummary.sugar}";
+		let NUTR_CONT6 = "${jjsummary.natrium}";
+		let NUTR_CONT7 = "${jjsummary.chole}";
+		let NUTR_CONT8 = "${jjsummary.fattyacid}";
+		let NUTR_CONT9 = "${jjsummary.transfat}";
 		let BGN_YEAR = "안쓰는 데이터";
-		let ANIMAL_PLANT = "${summary.maker}";
+		let ANIMAL_PLANT = "${jjsummary.maker}";
 		let ctx = $('#myDoughnutChart');
 		let names = "${member.name}";
 		let myDoughnutChart = new Chart(ctx,
@@ -129,7 +115,7 @@
 						labels : [ '칼로리', '탄수화물', '단백질', '지방', '당류', '나트륨',
 								'콜레스테롤', '포화지방산', '트랜스지방' ],
 						datasets : [ {
-							label : names + '님의 총 섭취정보',
+							label : names + '님의 총 찜한 정보',
 							data : [ NUTR_CONT1, NUTR_CONT2, NUTR_CONT3,
 									NUTR_CONT4, NUTR_CONT5, NUTR_CONT6,
 									NUTR_CONT7, NUTR_CONT8, NUTR_CONT9 ],

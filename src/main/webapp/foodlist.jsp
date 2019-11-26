@@ -57,8 +57,8 @@
 						</div>
 						<div class="col-md-9">
 							<!-- ?? -->
-							<table id="" class="table" onclick="javascript:moveFoodInfo('${food.code}')">
-								<tr>
+							<table id="" class="table">
+								<tr  onclick="javascript:moveFoodInfo('${food.code}')">
 									<td><h3 class="high_light">${food.name}</h3> <span><b>${food.maker}</b></span><span
 										class="fly">&nbsp;${food.frequency}</span><span class="
 glyphicon glyphicon-eye-open fly"></span></td>
@@ -67,7 +67,10 @@ glyphicon glyphicon-eye-open fly"></span></td>
 									<td>${food.material}</td>
 								</tr>
 								<tr>
-								<td>알레르기 성분 : ${food.allergy}</td>
+								<td>알레르기 주의 성분 : ${food.allergy}</td>
+								<c:if test="${not empty member}">
+								<td id ="allimg"></td>
+								</c:if>
 								</tr>
 								
 							</table>

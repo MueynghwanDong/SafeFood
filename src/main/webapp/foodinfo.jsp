@@ -66,8 +66,8 @@
 					</table>
 					<input type="hidden" name="fname" id="fname" value="${foodview.code}"/>
 					<input type="number" name="count" id ="count">
-					<input type="button" onClick ="addcount()" class="btn btn-default" value="추가"/> <input
-						type="button" class="btn btn-default" value="찜" />
+					<input type="button" onClick ="addcount()" class="btn btn-default" value="추가"/> 
+					<input type="button" onClick="addjjim()"class="btn btn-default" value="찜" />
 				</div>
 			</div>
 			<div class="container">
@@ -167,7 +167,29 @@
 			}
 		});
 	}
-	
+	function addjjim(){
+		console.log("들어옴");
+		
+		let idx = "${member.id}";
+		let code = $("#fname").val();
+		let count = $("#count").val();
+		let foodname = $("#foodname").text();
+ 		/* let foodname =${foodview.name}; */
+		let allData = { "code": code, "count": count , "foodname" : foodname, "idx" : idx};
+		$.ajax({
+			url:"addjjim.do",
+			method:"post",
+			data:allData,
+			success:function(res){
+				alert("추가 완료");
+				 console.log("완료!");
+			},
+			error:function(e){
+				alert("오류");
+				console.log(e);
+			}
+		});
+	}
 	function similar(){
 		console.log($("#fname").val());
 		$.ajax({
