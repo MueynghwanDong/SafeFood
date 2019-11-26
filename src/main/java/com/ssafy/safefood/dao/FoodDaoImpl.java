@@ -89,5 +89,10 @@ public class FoodDaoImpl implements FoodDao {
 	@Override
 	public void loadData() {
 	}
+
+	@Override
+	public List<Food> searchview() {
+		return session.selectList(namespace+"viewsearch");
+	}
 	
 }

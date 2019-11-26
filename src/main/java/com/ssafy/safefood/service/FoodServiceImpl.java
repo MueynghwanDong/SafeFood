@@ -112,4 +112,9 @@ public class FoodServiceImpl implements FoodService {
 			logger.error("로그인 정보 받아오기 실패", e);
 		}
 	}
+
+	@Override
+	public List<Food> searchview() {
+		return dao.searchview();
+	}
 }

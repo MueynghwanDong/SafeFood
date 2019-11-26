@@ -14,4 +14,5 @@ public interface FoodService {
 	public List<Food> searchBestIndex();
 	public void updateClick(Food food);
 //	public void addeat(int code, int amount);
+	public List<Food> searchview();
 }

@@ -33,6 +33,7 @@ import com.ssafy.safefood.dto.Member;
 import com.ssafy.safefood.dto.PageMaker;
 import com.ssafy.safefood.dto.SearchCriteria;
 import com.ssafy.safefood.service.BoardService;
+import com.ssafy.safefood.service.EatService;
 import com.ssafy.safefood.service.FoodService;
 import com.ssafy.safefood.service.MemberService;
 
@@ -50,6 +51,9 @@ public class FoodWebController {
 
 	@Autowired
 	BoardService bs;
+	
+	@Autowired
+	EatService es;
 
 	/*
 	 * redirect
@@ -254,40 +258,11 @@ public class FoodWebController {
 	@GetMapping("/foodsortlist.do")
 	public String FoodSortList(String stype, String word, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) {
-		String sort = (String) session.getAttribute("sort");
+		List<Food>foods = fs.searchview();
+		session.setAttribute("foods", foods);
+		System.out.println(foods);
 
-		System.out.println("정렬 여부" + sort);
-		session.setAttribute("sort", "false");
-
-		if (stype == null) {
-			stype = "all";
-		}
-		if (word == null) {
-			word = "";
-		}
-
-		List<Food> f = fs.searchAll(new FoodPageBean(stype, word, "", ""));
-
-		quickSort(f, 0, f.size() - 1);
-
-		System.out.println("FoodList 호출");
-		request.setAttribute("foods", f);
-
-//		HttpSession session = request.getSession();
-		session.setAttribute("foods", f);
-		session.setAttribute("data", "true");
-
-		Gson gson = new Gson();
-
-		System.out.println(gson.toJson(f));
-		response.setContentType("application/json;charset=utf-8");
-		try {
-			response.getWriter().append(gson.toJson(f));
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		return "none:foodlist";
+		return "foodlist";
 	}
 
 	@GetMapping("/foodview.do")
@@ -451,7 +426,8 @@ public class FoodWebController {
 			Member result = ms.eatMember(loginuser.getId());
 			System.out.println(result.getEatlist());
 
-			List<Eat> myNutri = result.getEatlist();
+			//List<Eat> myNutri = result.getEatlist();
+			List<Eat>myNutri = es.select(loginuser.getId());
 
 			Food sum = new Food(-1, "", 0l, 0l, 0l, 0l, 0l, 0l, 0l, 0l, 0l, 0l, "", "", "", "", 0, 0);
 
@@ -478,19 +454,22 @@ public class FoodWebController {
 		}
 	}
 
-	@GetMapping("/addeatfood.do")
+	@GetMapping("addcount.do")
 	public String AddEatFoodController(HttpSession session, HttpServletRequest request) {
 		// 유저 이름하고 먹은 음식 가져오기
 
 		Member loginuser = (Member) session.getAttribute("member");
-
+		
 		int code = Integer.parseInt(request.getParameter("code"));
+		System.out.println(code);
 		int amount = Integer.parseInt(request.getParameter("count"));
+		System.out.println(amount);
 		String foodname = request.getParameter("foodname");
-		String id = request.getParameter("id");
+		System.out.println(foodname);
+		String id = request.getParameter("idx");
 
 		if (loginuser != null) {
-			Eat temp = new Eat(0, id, code, amount, foodname);
+			Eat temp = new Eat(0, id, code, amount, foodname,null);
 
 			Member result = ms.eatMember(loginuser.getId());
 			System.out.println(result.getEatlist());
