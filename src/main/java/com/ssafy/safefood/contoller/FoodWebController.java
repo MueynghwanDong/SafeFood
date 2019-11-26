@@ -441,7 +441,7 @@ public class FoodWebController {
 		if (loginuser != null) {
 			Member result = ms.eatMember(loginuser.getId());
 			// System.out.println(result.getEatlist());
-
+			
 			// List<Eat> myNutri = result.getEatlist();
 			List<Eat> myNutri = es.select(loginuser.getId());
 
