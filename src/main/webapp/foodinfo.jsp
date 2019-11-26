@@ -158,10 +158,12 @@
 			method:"post",
 			data:allData,
 			success:function(res){
-				 consol.log("완료!");
+				alert("추가 완료");
+				 console.log("완료!");
 			},
-			error:function(){
+			error:function(e){
 				alert("오류");
+				console.log(e);
 			}
 		});
 	}

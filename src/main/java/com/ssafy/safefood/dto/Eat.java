@@ -18,14 +18,6 @@ public class Eat {
 	}
 
 	
-	public Eat(int idx, String id, int code, int amount, String foodname, Date eatday) {
-		this.idx = idx;
-		this.id = id;
-		this.code = code;
-		this.amount = amount;
-		this.foodname = foodname;
-		this.eatday = eatday;
-	}
 	public int getIdx() {
 		return idx;
 	}
@@ -53,6 +45,16 @@ public class Eat {
 	
 	
 	
+	
+	public Eat(int idx, String id, int code, int amount, String foodname, Date eatday) {
+		super();
+		this.idx = idx;
+		this.id = id;
+		this.code = code;
+		this.amount = amount;
+		this.foodname = foodname;
+		this.eatday = eatday;
+	}
 	@Override
 	public String toString() {
 		return "Eat [idx=" + idx + ", id=" + id + ", code=" + code + ", amount=" + amount + ", foodname=" + foodname

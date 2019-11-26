@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -8,20 +7,17 @@
 <title>제품 상세 정보</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
 <link type="text/css" href="css/css.css" rel="stylesheet" />
 
@@ -31,7 +27,7 @@
 	<div id="detail">
 		<div id="result" class="container">
 			<h1 class="text-center">
-				<span class="high_light">영양 정보</span>
+				<span class="high_light">섭취 식품 영양 정보</span>
 			</h1>
 			<br>
 			<div class="row">
@@ -54,7 +50,7 @@
 				<span class="high_light">섭취 내역</span>
 			</h1>
 			<br>
-			<div class = "container">
+			<div class="container">
 				<div class="row">
 					<div class="col-md-12">
 						<table id="foodlist2" class="table table-hover">
@@ -65,6 +61,8 @@
 									<td><span class="high_light"><b>상품명</b></span></td>
 									<td><span class="high_light"><b>수량</b></span></td>
 									<td><span class="high_light"><b>섭취일자</b></span>
+<!-- 									<td><span class="high_light"><b>알레르기 포함여부</b></span> -->
+									<td><span class="high_light"><b>삭제</b></span>
 								</tr>
 
 								<!-- 	private int idx; -->
@@ -75,9 +73,11 @@
 									<tr>
 										<td>${nutri.idx}</td>
 										<td>${nutri.code}</td>
-										<td>${nutri.foodname}</td>
+										<td> <a href="foodview.do?code=${nutri.code}">${nutri.foodname}</a></td>
 										<td>${nutri.amount}</td>
 										<td>${nutri.eatday}</td>
+<%-- 										<td>${nutri.check}</td> --%>
+										<td><input type="button" value="삭제" onclick="deleteeat(${nutri.idx})"></td>
 									</tr>
 								</c:forEach>
 							</tbody>
@@ -90,8 +90,25 @@
 	<jsp:include page="footer.jsp"></jsp:include>
 </body>
 <script>
+	function deleteeat(idx) {
+		
+		location.href = "./deleteeat.do?idx="+idx;
+// 		console.log(idx);
+// 		$.ajax({
+// 			url:"deleteeat.do?idx="+idx,
+// 			method:"post",
+// 			//data:idx,
+// 			success:function(res){
+// 				 console.log("완료!");
+// 			},
+// 			error:function(e){
+// 				console.log("오류");
+// 				console.log(e);
+// 			}
+// 		});
+	}
 	function graphs() {
-		let SERVING_WT = "0";
+		let SERVING_WT = "${summary.supportpereat}";
 		let NUTR_CONT1 = "${summary.calory}";
 		let NUTR_CONT2 = "${summary.carbo}";
 		let NUTR_CONT3 = "${summary.protein}";
@@ -105,14 +122,14 @@
 		let ANIMAL_PLANT = "${summary.maker}";
 		let ctx = $('#myDoughnutChart');
 		let names = "${member.name}";
-		let myDoughnutChart = new Chart(ctx, {
-			type : 'bar',
-			data : {
-				labels : [ '칼로리', '탄수화물', '단백질', '지방', '당류', '나트륨', '콜레스테롤',
-						'포화지방산', '트랜스지방' ],
-				datasets : [
-						{
-							label : names+'님의 총 섭취정보',
+		let myDoughnutChart = new Chart(ctx,
+				{
+					type : 'bar',
+					data : {
+						labels : [ '칼로리', '탄수화물', '단백질', '지방', '당류', '나트륨',
+								'콜레스테롤', '포화지방산', '트랜스지방' ],
+						datasets : [ {
+							label : names + '님의 총 섭취정보',
 							data : [ NUTR_CONT1, NUTR_CONT2, NUTR_CONT3,
 									NUTR_CONT4, NUTR_CONT5, NUTR_CONT6,
 									NUTR_CONT7, NUTR_CONT8, NUTR_CONT9 ],
@@ -135,11 +152,11 @@
 									'rgba(255, 224, 224, 1)',
 									'rgba(209, 0, 129, 1)', ],
 							borderWidth : 1
-						}]
-			},
+						} ]
+					},
 
-		// These labels appear in the legend and in the tooltips when hovering different arcs    
-		});
+				// These labels appear in the legend and in the tooltips when hovering different arcs    
+				});
 
 		let trs = document.createElement("tr");
 		let trs2 = document.createElement("tr");

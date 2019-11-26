@@ -8,4 +8,5 @@ public interface EatDao {
 
 	public List<Eat> select(String id);
 	public int insert(Eat eat);
+	public int delete(int idx);
 }

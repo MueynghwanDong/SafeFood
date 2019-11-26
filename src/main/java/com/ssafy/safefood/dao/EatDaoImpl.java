@@ -26,4 +26,9 @@ public class EatDaoImpl implements EatDao{
 		return session.insert(ns+"insert", eat);
 	}
 
+	@Override
+	public int delete(int idx) {
+		return session.delete(ns+"delete",idx);
+	}
+
 }

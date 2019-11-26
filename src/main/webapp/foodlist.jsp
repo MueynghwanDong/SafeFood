@@ -66,6 +66,10 @@ glyphicon glyphicon-eye-open fly"></span></td>
 								<tr>
 									<td>${food.material}</td>
 								</tr>
+								<tr>
+								<td>알레르기 성분 : ${food.allergy}</td>
+								</tr>
+								
 							</table>
 						</div>
 					</div>

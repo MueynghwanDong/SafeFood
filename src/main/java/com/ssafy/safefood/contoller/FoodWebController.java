@@ -15,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -50,7 +51,7 @@ public class FoodWebController {
 
 	@Autowired
 	BoardService bs;
-	
+
 	@Autowired
 	EatService es;
 
@@ -99,8 +100,8 @@ public class FoodWebController {
 	}
 
 	@GetMapping("modify.do")
-	public void modifyPagingGET(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,HttpServletRequest req, HttpSession session)
-			throws Exception {
+	public void modifyPagingGET(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,
+			HttpServletRequest req, HttpSession session) throws Exception {
 		System.out.println(bno);
 		bs.updateViewCnt(bno);
 		model.addAttribute(bs.read(bno));
@@ -108,20 +109,21 @@ public class FoodWebController {
 		if (boards != null) {
 			req.setAttribute("boards", boards);
 			session.setAttribute("boards", boards);
-		} 
+		}
 	}
+
 	@GetMapping("readboard.do")
-	public void readboardGET(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,HttpServletRequest req, HttpSession session)
-			throws Exception {
+	public void readboardGET(@RequestParam("bno") int bno, @ModelAttribute("cri") SearchCriteria cri, Model model,
+			HttpServletRequest req, HttpSession session) throws Exception {
 		System.out.println(bno);
 		model.addAttribute(bs.read(bno));
 		List<Board> boards = bs.listAll();
 		if (boards != null) {
 			req.setAttribute("boards", boards);
 			session.setAttribute("boards", boards);
-		} 
+		}
 	}
-	
+
 //	@PostMapping("readboard.do")
 //	public String readboardPOST(Board board, SearchCriteria cri, RedirectAttributes rttr,HttpServletRequest req, HttpSession session) throws Exception {
 //		//bs.updateViewCnt(board.getBno());
@@ -146,8 +148,9 @@ public class FoodWebController {
 	}
 
 	@PostMapping("modify.do")
-	public String modifyPagingPOST(Board board, SearchCriteria cri, RedirectAttributes rttr,HttpServletRequest req, HttpSession session) throws Exception {
-		//bs.updateViewCnt(board.getBno());
+	public String modifyPagingPOST(Board board, SearchCriteria cri, RedirectAttributes rttr, HttpServletRequest req,
+			HttpSession session) throws Exception {
+		// bs.updateViewCnt(board.getBno());
 		bs.modify(board);
 		rttr.addAttribute("page", cri.getPage());
 		rttr.addAttribute("perPageNum", cri.getPerPageNum());
@@ -158,7 +161,7 @@ public class FoodWebController {
 		if (boards != null) {
 			req.setAttribute("boards", boards);
 			session.setAttribute("boards", boards);
-		} 
+		}
 		return "redirect:board.do";
 	}
 
@@ -175,14 +178,14 @@ public class FoodWebController {
 	}
 
 	@GetMapping("/board.do")
-	public String postboard(@ModelAttribute("cri") SearchCriteria cri, HttpServletRequest request,Model model, HttpSession session) {
+	public String postboard(@ModelAttribute("cri") SearchCriteria cri, HttpServletRequest request, Model model,
+			HttpSession session) {
 
 		try {
 			List<Board> boards = bs.listAll();
 			if (boards != null) {
 				request.setAttribute("boards", boards);
 				session.setAttribute("boards", boards);
-				
 
 				model.addAttribute("boards", bs.listSearchCriteria(cri));
 
@@ -190,12 +193,12 @@ public class FoodWebController {
 				pageMaker.setCri(cri);
 				pageMaker.setTotalCount(bs.listSearchCount(cri));
 				model.addAttribute("pageMaker", pageMaker);
-				
+
 				return "notify";
 			} else {
 				return "index";
 			}
-			
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -240,18 +243,18 @@ public class FoodWebController {
 
 		System.out.println("FoodList 호출");
 		request.setAttribute("foods", f);
-		
+
 //		HttpSession session = request.getSession();
 		session.setAttribute("foods", f);
 		session.setAttribute("data", "true");
-		
+
 		return "foodlist";
 	}
 
 	@GetMapping("/foodsortlist.do")
 	public String FoodSortList(String stype, String word, HttpSession session, HttpServletRequest request,
 			HttpServletResponse response) {
-		List<Food>foods = fs.searchview();
+		List<Food> foods = fs.searchview();
 		session.setAttribute("foods", foods);
 		System.out.println(foods);
 
@@ -363,6 +366,26 @@ public class FoodWebController {
 		return "memberlist";
 	}
 
+	@GetMapping("deleteeat.do")
+	public String Deleteeat(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
+		System.out.println(req.getParameter("idx"));
+		int idx = Integer.parseInt(req.getParameter("idx"));
+		System.out.println(idx);
+		int result = es.delete(idx);
+		if (result > 0) {
+			System.out.println("삭제 완료");
+			Member temp = (Member) session.getAttribute("member");
+			List<Eat> myNutri = es.select(temp.getId());
+			System.out.println(myNutri);
+			req.setAttribute("nutri", myNutri);
+			return "redirect:membereat.do";
+		} else {
+			System.out.println("삭제 오류");
+			return "redirect:membereat.do";
+		}
+
+	}
+
 	@PostMapping("/foodsimilar.do")
 	@ResponseBody
 	public String FoodsimilarController(HttpServletRequest request, HttpSession sessionm,
@@ -407,7 +430,7 @@ public class FoodWebController {
 	}
 
 	@GetMapping("/membereat.do")
-	public String MemberEatFoodController(String code, HttpSession session) {
+	public String MemberEatFoodController(String code, HttpSession session, HttpServletRequest request) {
 		// 유저 이름하고 먹은 음식 가져오기
 		Member loginuser = (Member) session.getAttribute("member");
 
@@ -417,28 +440,32 @@ public class FoodWebController {
 
 		if (loginuser != null) {
 			Member result = ms.eatMember(loginuser.getId());
-			System.out.println(result.getEatlist());
+			// System.out.println(result.getEatlist());
 
-			//List<Eat> myNutri = result.getEatlist();
-			List<Eat>myNutri = es.select(loginuser.getId());
+			// List<Eat> myNutri = result.getEatlist();
+			List<Eat> myNutri = es.select(loginuser.getId());
 
+			// System.out.println(myNutri);
 			Food sum = new Food(-1, "", 0l, 0l, 0l, 0l, 0l, 0l, 0l, 0l, 0l, 0l, "", "", "", "", 0, 0);
 
 			for (Eat e : myNutri) {
 				Food temp = fs.search(e.getCode());
-				sum.setSupportpereat(sum.getSupportpereat() + temp.getSupportpereat());
-				sum.setCalory(sum.getCalory() + temp.getCalory());
-				sum.setCarbo(sum.getCarbo() + temp.getCarbo());
-				sum.setProtein(sum.getProtein() + temp.getProtein());
-				sum.setFat(sum.getFat() + temp.getFat());
-				sum.setSugar(sum.getSugar() + temp.getSugar());
-				sum.setNatrium(sum.getNatrium() + temp.getNatrium());
-				sum.setChole(sum.getChole() + temp.getChole());
-				sum.setFattyacid(sum.getFattyacid() + temp.getFattyacid());
-				sum.setTransfat(sum.getTransfat() + temp.getTransfat());
+				int count = e.getAmount();
+//				System.out.println(temp);
+
+				sum.setSupportpereat(Math.round(sum.getSupportpereat() + (temp.getSupportpereat() * count)));
+				sum.setCalory(Math.round(sum.getCalory() + (temp.getCalory() * count)));
+				sum.setCarbo(Math.round(sum.getCarbo() + (temp.getCarbo() * count)));
+				sum.setProtein(Math.round(sum.getProtein() + (temp.getProtein() * count)));
+				sum.setFat(Math.round(sum.getFat() + (temp.getFat() * count)));
+				sum.setSugar(Math.round(sum.getSugar() + (temp.getSugar() * count)));
+				sum.setNatrium(Math.round(sum.getNatrium() + (temp.getNatrium() * count)));
+				sum.setChole(Math.round(sum.getChole() + (temp.getChole() * count)));
+				sum.setFattyacid(Math.round(sum.getFattyacid() + (temp.getFattyacid() * count)));
+				sum.setTransfat(Math.round(sum.getTransfat() + (temp.getTransfat() * count)));
 			}
 
-			session.setAttribute("nutri", myNutri);
+			request.setAttribute("nutri", myNutri);
 			session.setAttribute("summary", sum);
 
 			return "myeat";
@@ -447,27 +474,25 @@ public class FoodWebController {
 		}
 	}
 
-	@GetMapping("addcount.do")
+	@PostMapping("/addcount.do")
 	public String AddEatFoodController(HttpSession session, HttpServletRequest request) {
 		// 유저 이름하고 먹은 음식 가져오기
 
 		Member loginuser = (Member) session.getAttribute("member");
-		
+
 		int code = Integer.parseInt(request.getParameter("code"));
-		System.out.println(code);
 		int amount = Integer.parseInt(request.getParameter("count"));
-		System.out.println(amount);
 		String foodname = request.getParameter("foodname");
-		System.out.println(foodname);
 		String id = request.getParameter("idx");
 
 		if (loginuser != null) {
-			Eat temp = new Eat(0, id, code, amount, foodname,null);
+			Eat temp = new Eat(0, id, code, amount, foodname, null);
 
 			Member result = ms.eatMember(loginuser.getId());
-			System.out.println(result.getEatlist());
+			// System.out.println(result.getEatlist());
+			es.insert(temp);
 
-			return "success";
+			return "redirect:foodinfo";
 		} else {
 			return "fail";
 		}

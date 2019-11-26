@@ -24,4 +24,9 @@ public class EatServiceImpl implements EatService {
 		return edao.insert(eat);
 	}
 
+	@Override
+	public int delete(int idx) {
+		return edao.delete(idx);
+	}
+
 }
