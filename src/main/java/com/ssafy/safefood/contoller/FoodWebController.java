@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -87,6 +88,12 @@ public class FoodWebController {
 //	public String rboard() {
 //		return "registerboard";
 //	}
+
+	@GetMapping("/{name}.html")
+	public String page(@PathVariable String name, Model model) {
+		model.addAttribute("pageName", name);
+		return "page";
+	}
 
 	@PostMapping("registerboard.do")
 	public String registerboard(Board board, HttpServletRequest req, HttpSession session) {
