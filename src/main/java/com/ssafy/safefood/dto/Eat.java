@@ -1,11 +1,14 @@
 package com.ssafy.safefood.dto;
 
+import java.sql.Date;
+
 public class Eat {
 	private int idx;
 	private String id;
 	private int code;
 	private int amount;
 	private String foodname;
+	private Date eatday;
 	
 	public String getFoodname() {
 		return foodname;
@@ -15,6 +18,14 @@ public class Eat {
 	}
 
 	
+	public Eat(int idx, String id, int code, int amount, String foodname, Date eatday) {
+		this.idx = idx;
+		this.id = id;
+		this.code = code;
+		this.amount = amount;
+		this.foodname = foodname;
+		this.eatday = eatday;
+	}
 	public int getIdx() {
 		return idx;
 	}
@@ -48,14 +59,6 @@ public class Eat {
 				+ "]";
 	}
 	
-	public Eat(int idx, String id, int code, int amount, String foodname) {
-		super();
-		this.idx = idx;
-		this.id = id;
-		this.code = code;
-		this.amount = amount;
-		this.foodname = foodname;
-	}
 	
 	@Override
 	public int hashCode() {
@@ -67,6 +70,12 @@ public class Eat {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + idx;
 		return result;
+	}
+	public Date getEatday() {
+		return eatday;
+	}
+	public void setEatday(Date eatday) {
+		this.eatday = eatday;
 	}
 	@Override
 	public boolean equals(Object obj) {

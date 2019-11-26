@@ -52,7 +52,7 @@
 						<tbody>
 							<tr>
 								<td width="150px"><b>음식명</b></td>
-								<td>${foodview.name}</td>
+								<td id ="foodname">${foodview.name}</td>
 							</tr>
 							<tr>
 								<td><b>성분</b></td>
@@ -145,11 +145,14 @@
 
 <script>
 	function addcount(){
-		var id = ${member.id};
-		var code = $("#fname").val();
-		var count = $("#count").val();
-		var foodname = ${foodview.name};
-		var allData = { "code": code, "count": count , "foodname" : fname, "id" : id};
+		console.log("들어옴");
+		
+		let idx = "${member.id}";
+		let code = $("#fname").val();
+		let count = $("#count").val();
+		let foodname = $("#foodname").text();
+ 		/* let foodname =${foodview.name}; */
+		let allData = { "code": code, "count": count , "foodname" : foodname, "idx" : idx};
 		$.ajax({
 			url:"addcount.do",
 			method:"post",

@@ -64,6 +64,7 @@
 									<td><span class="high_light"><b>상품코드</b></span></td>
 									<td><span class="high_light"><b>상품명</b></span></td>
 									<td><span class="high_light"><b>수량</b></span></td>
+									<td><span class="high_light"><b>섭취일자</b></span>
 								</tr>
 
 								<!-- 	private int idx; -->
@@ -76,6 +77,7 @@
 										<td>${nutri.code}</td>
 										<td>${nutri.foodname}</td>
 										<td>${nutri.amount}</td>
+										<td>${nutri.eatday}</td>
 									</tr>
 								</c:forEach>
 							</tbody>
