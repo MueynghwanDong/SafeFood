@@ -268,7 +268,7 @@ public class FoodWebController {
 	}
 
 	@GetMapping("/foodview.do")
-	public String FoodView(String code, HttpServletRequest request) {
+	public String FoodView(String code, HttpServletRequest request,HttpSession session) {
 		// 가져오기
 
 		Food f = fs.search(Integer.parseInt(code));
@@ -285,7 +285,7 @@ public class FoodWebController {
 
 		System.out.println(f.getFrequency());
 
-		HttpSession session = request.getSession();
+		//HttpSession session = request.getSession();
 		session.setAttribute("foodview", f);
 
 //		request.setAttribute("foodview", f);

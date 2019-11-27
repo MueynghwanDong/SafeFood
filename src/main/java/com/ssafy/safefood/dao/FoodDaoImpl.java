@@ -54,10 +54,10 @@ public class FoodDaoImpl implements FoodDao {
 	@Override
 	public List<Food> searchAll(FoodPageBean bean) {
 		String stmt = namespace + "searchAllBean";
-		System.out.println("결과");
-		System.out.println(bean.getKey() + " " + bean.getWord());
+		//System.out.println("결과");
+		//System.out.println(bean.getKey() + " " + bean.getWord());
 		List<Food> res = session.selectList(stmt, bean);
-		System.out.println(res);
+		//System.out.println(res);
 		return res;
 	}
 
@@ -82,7 +82,7 @@ public class FoodDaoImpl implements FoodDao {
 	public int updateClick(Food food) {
 		String stmt = namespace + "updateClick";
 		System.out.println("update" + food);
-		food.setAllergy(food.getAllergy()+1);
+		food.setAllergy(food.getAllergy());
 		return session.update(stmt, food);
 	}
 
