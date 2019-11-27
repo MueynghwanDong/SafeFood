@@ -10,6 +10,17 @@
 	<!-- searchAll -->
 	<!-- search -->
 
+	<update id="sfreq" parameterType="food">
+		update food set sfreq =#{sfreq}
+		where code =#{code}
+	</update>
+
+	<select id="best" resultType="food">
+		select * from food order by sfreq desc limit 5
+<!-- 		select * from food where sfreq>0 order by sfreq desc limit 5 -->
+	</select>
+
+
 	<update id="updateClick" parameterType="food">
 		update food set frequency
 		= #{frequency} where code = #{code};
@@ -78,11 +89,13 @@
 		food where code = #{code};
 	</select>
 	<select id="viewsearch" resultType="food">
-		select * from food order by frequency desc	
+		select * from food order by
+		frequency desc
 	</select>
 
 	<insert id="insertEat" parameterType="eat">
-		insert into eat values (#{id}, #{code}, #{amount}, #{foodname});
+		insert into eat values
+		(#{id}, #{code}, #{amount}, #{foodname});
 	</insert>
 
 	<resultMap type="food" id="foodDefault">

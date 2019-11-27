@@ -36,21 +36,13 @@
 	<div id="detail">
 		<div id="result" class="container">
 			<h2 class="high_light middle">
-				<b>상품 정보</b>
+				<b>베스트 상품 정보</b>
 			</h2>
 
-			<div class="dropdown fly">
-				<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1"
-					data-toggle="dropdown" aria-expanded="true">
-					정렬 <span class="caret"></span>
-				</button>
-				<ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu1">
-					<li role="presentation"><a role="menuitem" tabindex="-1" href="#" id="view">View</a></li>
-				</ul>
-			</div>
+
 			<br>
 			<div id="print">
-				<c:forEach items="${foods}" var="food">
+				<c:forEach items="${foodlist}" var="food">
 					<div class="row">
 						<div class="col-md-3">
 							<img src="${food.img}" height="200px" width="200px" />
@@ -58,21 +50,20 @@
 						<div class="col-md-9">
 							<!-- ?? -->
 							<table id="" class="table">
-								<tr  onclick="javascript:moveFoodInfo('${food.code}')">
+								<tr onclick="javascript:moveFoodInfo('${food.code}')">
 									<td><h3 class="high_light">${food.name}</h3> <span><b>${food.maker}</b></span><span
-										class="fly">&nbsp;${food.frequency}</span><span class="
-glyphicon glyphicon-eye-open fly"></span></td>
+										class="fly">&nbsp;섭취 횟수 : ${food.sfreq}</span></td>
 								</tr>
 								<tr>
 									<td>${food.material}</td>
 								</tr>
 								<tr>
-								<td>알레르기 주의 성분 : ${food.allergy}</td>
-								<c:if test="${not empty member}">
-								<td id ="allimg"></td>
-								</c:if>
+									<td>알레르기 주의 성분 : ${food.allergy}</td>
+									<c:if test="${not empty member}">
+										<td id="allimg"></td>
+									</c:if>
 								</tr>
-								
+
 							</table>
 						</div>
 					</div>
@@ -93,11 +84,6 @@ let moveFoodInfo = (code) => {
 	location.href="./foodview.do?code="+code;
 }
 
-$("#view").on("click", ()=>{
- 	location.href="./foodsortlist.do";
-	
-	
-})
 
 </script>
 <!-- 합쳐지고 최소화된 최신 CSS -->

@@ -144,9 +144,27 @@
 </body>
 
 <script>
+function updatefreq(){
+	let code = $("#fname").val();
+	let count = $("#count").val();
+	let data = {"code":code, "count":count}
+	$.ajax({
+		url:"updatefreq.do",
+		method:"post",
+		data:data,
+		success:function(res){
+			//alert("추가 완료");
+			 console.log("updatefreq 완료");
+		},
+		error:function(e){
+			alert("오류");
+			console.log(e);
+		}
+	});
+}
 	function addcount(){
 		console.log("들어옴");
-		
+		updatefreq();
 		let idx = "${member.id}";
 		let code = $("#fname").val();
 		let count = $("#count").val();

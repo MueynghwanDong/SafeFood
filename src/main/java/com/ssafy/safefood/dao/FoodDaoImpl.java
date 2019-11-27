@@ -27,10 +27,16 @@ public class FoodDaoImpl implements FoodDao {
 	 * 
 	 * @return
 	 */
-	public List<Food> searchBest() {
-		return null;
+	public List<Food> eatBest() {
+		return session.selectList(namespace+"best");
 	}
 
+
+	@Override
+	public int updatesfrq(Food food) {
+		return session.update(namespace+"sfreq",food);
+	}
+	
 	public List<Food> searchBestIndex() {
 		return null;
 	}
@@ -94,5 +100,6 @@ public class FoodDaoImpl implements FoodDao {
 	public List<Food> searchview() {
 		return session.selectList(namespace+"viewsearch");
 	}
+
 	
 }
