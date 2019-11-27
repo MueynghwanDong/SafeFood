@@ -37,7 +37,9 @@ public class Food {
 	protected int frequency;
 	protected int sfreq;
 	
-	
+
+
+
 	public Food(int code, String name, double supportpereat, double calory, double carbo, double protein, double fat,
 			double sugar, double natrium, double chole, double fattyacid, double transfat, String maker,
 			String material, String img, String allergy, int frequency, int sfreq) {
@@ -182,6 +184,10 @@ public class Food {
 	public void setSfreq(int sfreq) {
 		this.sfreq = sfreq;
 	}
+
+
+
+
 	@Override
 	public String toString() {
 		return "Food [code=" + code + ", name=" + name + ", supportpereat=" + supportpereat + ", calory=" + calory

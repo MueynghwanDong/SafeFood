@@ -58,8 +58,8 @@
 							<ul class="nav navbar-nav">
 								<li><a href="board.do">공지사항</a></li>
 								<li><a href="foodlist.do">상품정보</a></li>
-								<li><a href="membereat.do">내 섭취 정보</a></li>
 								<c:if test="${not empty member}">
+								<li><a href="membereat.do">내 섭취 정보</a></li>
 								<li><a href="jjim.do">찜한 상품 정보</a></li>
 								</c:if>
 								<li><a href="best.do">베스트 섭취 목록</a></li>

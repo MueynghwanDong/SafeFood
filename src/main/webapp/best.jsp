@@ -36,7 +36,7 @@
 	<div id="detail">
 		<div id="result" class="container">
 			<h2 class="high_light middle">
-				<b>베스트 상품 정보</b>
+				<b>베스트 상품 정보(상위 5개 상품)</b>
 			</h2>
 
 
