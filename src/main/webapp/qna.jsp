@@ -121,8 +121,8 @@
         a();
       })([]);
     </script>
-    <script src="dist/static/js/2.9cabdab5.chunk.js"></script>
-    <script src="dist/static/js/main.8b19fd63.chunk.js"></script>
+    <script src="dist/static/js/2.405b7c5a.chunk.js"></script>
+    <script src="dist/static/js/main.3946c872.chunk.js"></script>
     <jsp:include page="footer.jsp"></jsp:include>
   </body>
 </html>

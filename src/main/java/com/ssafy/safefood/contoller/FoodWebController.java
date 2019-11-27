@@ -89,7 +89,7 @@ public class FoodWebController {
 //		return "registerboard";
 //	}
 
-	@GetMapping("/qna.html")
+	@GetMapping("/qna")
 	public String page(Model model) {
 		// model.addAttribute("pageName", name);
 		log.trace("page html 호출");

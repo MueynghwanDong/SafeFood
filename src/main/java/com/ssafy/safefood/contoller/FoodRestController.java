@@ -287,5 +287,8 @@ public class FoodRestController {
 			log.error("BoardBUpdate", e);
 			throw e; //
 		}
+			// Member member = new Member("ssafy", "1111", "test", "test", "test", "test");
+			// member.setAuth(0);
+			// return new ResponseEntity<Object>(member, HttpStatus.OK);
 	}
 }
