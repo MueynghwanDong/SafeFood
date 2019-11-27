@@ -302,6 +302,16 @@ public class FoodWebController {
 	private String[] allergys = { "대두", "땅콩", "우유", "게", "새우", "참치", "연어", "쑥", "소고기", "닭고기", "돼지고기", "복숭아", "민들레",
 			"계란흰자" };
 
+	@GetMapping("/best.do")
+	public String best(HttpServletRequest request, HttpSession session) {
+		// 가져오기
+
+		List<Food> foodlist = fs.eatBest();
+		request.setAttribute("foodlist", foodlist);
+//		request.setAttribute("foodview", f);
+		return "best";
+	}
+	
 	@PostMapping("/signup.do")
 	public String Signup(HttpServletRequest request) {
 		String id = request.getParameter("id");
@@ -398,17 +408,18 @@ public class FoodWebController {
 		}
 
 	}
+
 	@GetMapping("deletejjim.do")
 	public String deletejjim(HttpSession session, HttpServletRequest req, HttpServletResponse res) {
-		//System.out.println(req.getParameter("idx"));
+		// System.out.println(req.getParameter("idx"));
 		int idx = Integer.parseInt(req.getParameter("idx"));
-		//System.out.println(idx);
+		// System.out.println(idx);
 		int result = js.delete(idx);
 		if (result > 0) {
 			System.out.println("삭제 완료");
 			Member temp = (Member) session.getAttribute("member");
 			List<Jjim> myNutri = js.select(temp.getId());
-			//System.out.println(myNutri);
+			// System.out.println(myNutri);
 			req.setAttribute("jjnutri", myNutri);
 			return "redirect:jjim.do";
 		} else {
@@ -597,6 +608,17 @@ public class FoodWebController {
 		} else {
 			return "fail";
 		}
+	}
+
+	@PostMapping("/updatefreq.do")
+	public String updatefreq(HttpSession session, HttpServletRequest request) {
+		// 유저 이름하고 먹은 음식 가져오기
+		int code = Integer.parseInt(request.getParameter("code"));
+		int amount = Integer.parseInt(request.getParameter("count"));
+		Food f = fs.search(code);
+		f.setSfreq(f.getSfreq() + amount);
+		fs.updatesfrq(f);
+		return "redirect:foodinfo";
 	}
 
 	@PostMapping("/addjjim.do")

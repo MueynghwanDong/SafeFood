@@ -40,7 +40,8 @@ public interface FoodDao {
 	 * web에서 구현할 내용.  
 	 * @return
 	 */
-	public List<Food> searchBest();
+	public List<Food> eatBest();
+	public int updatesfrq(Food food);
 	
 	public List<Food> searchBestIndex();
 	
