@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<class-diagram version="1.2.3" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
-  associations="true" dependencies="false" nesting-relationships="true" router="FAN">  
+<class-diagram version="1.2.3" icons="true" automaticImage="JPEG" always-add-relationships="false" 
+  generalizations="true" realizations="true" associations="true" dependencies="false" nesting-relationships="true" 
+  router="FAN">  
   <class id="1" language="java" name="com.ssafy.safefood.dto.Criteria" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dto/Criteria.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2640" y="324"/>    
+    <position height="-1" width="-1" x="2487" y="-51"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +13,7 @@
   </class>  
   <class id="2" language="java" name="com.ssafy.safefood.dto.Eat" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dto/Eat.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="206" width="152" x="993" y="-142"/>    
+    <position height="206" width="152" x="996" y="-144"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -22,7 +23,7 @@
   <class id="3" language="java" name="com.ssafy.safefood.dto.PageMaker" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dto/PageMaker.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="268" width="213" x="2550" y="-182"/>    
+    <position height="268" width="213" x="2124" y="-164"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -31,7 +32,7 @@
   </class>  
   <class id="4" language="java" name="com.ssafy.safefood.dto.Qna" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dto/Qna.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="283" width="199" x="2096" y="512"/>    
+    <position height="283" width="199" x="2099" y="510"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -41,7 +42,7 @@
   <class id="5" language="java" name="com.ssafy.safefood.dto.Nutrition" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dto/Nutrition.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="204" width="119" x="2761" y="507"/>    
+    <position height="204" width="119" x="2730" y="-59"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -51,7 +52,7 @@
   <class id="6" language="java" name="com.ssafy.safefood.dto.SearchCriteria" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dto/SearchCriteria.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2651" y="682"/>    
+    <position height="-1" width="-1" x="2641" y="256"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -60,7 +61,7 @@
   </class>  
   <class id="7" language="java" name="com.ssafy.safefood.dto.Food" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dto/Food.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="383" width="243" x="1454" y="414"/>    
+    <position height="383" width="243" x="1457" y="412"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -69,7 +70,7 @@
   </class>  
   <class id="8" language="java" name="com.ssafy.safefood.dto.Board" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dto/Board.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="169" width="233" x="342" y="-130"/>    
+    <position height="169" width="233" x="314" y="-155"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -79,7 +80,7 @@
   <class id="9" language="java" name="com.ssafy.safefood.dto.FoodPageBean" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dto/FoodPageBean.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="278" width="199" x="2318" y="305"/>    
+    <position height="278" width="199" x="2245" y="143"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -88,7 +89,7 @@
   </class>  
   <class id="10" language="java" name="com.ssafy.safefood.dto.Jjim" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dto/Jjim.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="189" width="163" x="55" y="773"/>    
+    <position height="189" width="163" x="16" y="580"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -97,7 +98,7 @@
   </class>  
   <class id="11" language="java" name="com.ssafy.safefood.dto.Member" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dto/Member.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="225" x="1245" y="-137"/>    
+    <position height="171" width="225" x="1248" y="-139"/>    
     <display autosize="false" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -107,7 +108,7 @@
   <class id="12" language="java" name="com.ssafy.safefood.dto.SafeFoodException" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dto/SafeFoodException.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2807" y="172"/>    
+    <position height="-1" width="-1" x="2766" y="-112"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -117,7 +118,7 @@
   <class id="13" language="java" name="com.ssafy.safefood.dao.BoardDAOImpl" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dao/BoardDAOImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="638" y="262"/>    
+    <position height="-1" width="-1" x="690" y="55"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -126,7 +127,7 @@
   </class>  
   <interface id="14" language="java" name="com.ssafy.safefood.dao.BoardDao" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dao/BoardDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="402" y="308"/>    
+    <position height="-1" width="-1" x="439" y="226"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -136,7 +137,7 @@
   <class id="15" language="java" name="com.ssafy.safefood.dao.EatDaoImpl" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dao/EatDaoImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="913" y="278"/>    
+    <position height="-1" width="-1" x="916" y="276"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -145,7 +146,7 @@
   </class>  
   <interface id="16" language="java" name="com.ssafy.safefood.dao.EatDao" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dao/EatDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1197" y="221"/>    
+    <position height="-1" width="-1" x="1200" y="219"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -154,7 +155,7 @@
   </interface>  
   <interface id="17" language="java" name="com.ssafy.safefood.dao.FoodDao" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dao/FoodDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1199" y="481"/>    
+    <position height="-1" width="-1" x="1202" y="479"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -164,7 +165,7 @@
   <class id="18" language="java" name="com.ssafy.safefood.dao.FoodDaoImpl" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dao/FoodDaoImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="959" y="700"/>    
+    <position height="-1" width="-1" x="758" y="642"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -174,7 +175,7 @@
   <class id="19" language="java" name="com.ssafy.safefood.dao.JjimDaoImpl" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dao/JjimDaoImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="329" y="1034"/>    
+    <position height="-1" width="-1" x="191" y="912"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -183,7 +184,7 @@
   </class>  
   <interface id="20" language="java" name="com.ssafy.safefood.dao.JjimDao" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dao/JjimDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="362" y="664"/>    
+    <position height="-1" width="-1" x="310" y="577"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -193,7 +194,7 @@
   <interface id="21" language="java" name="com.ssafy.safefood.dao.MemberDaoDb" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dao/MemberDaoDb.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1869" y="-76"/>    
+    <position height="-1" width="-1" x="1872" y="-78"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -203,7 +204,7 @@
   <class id="22" language="java" name="com.ssafy.safefood.dao.MemberDaoDbImpl" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dao/MemberDaoDbImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1872" y="219"/>    
+    <position height="-1" width="-1" x="1875" y="217"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -212,7 +213,7 @@
   </class>  
   <interface id="23" language="java" name="com.ssafy.safefood.dao.QnaDao" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dao/QnaDao.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1885" y="610"/>    
+    <position height="-1" width="-1" x="1888" y="608"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -222,7 +223,7 @@
   <class id="24" language="java" name="com.ssafy.safefood.dao.QnaDaoImpl" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/dao/QnaDaoImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2349" y="1054"/>    
+    <position height="-1" width="-1" x="2352" y="1052"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -232,7 +233,7 @@
   <class id="25" language="java" name="com.ssafy.safefood.service.BoardServiceImpl" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/service/BoardServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="124" y="351"/>    
+    <position height="-1" width="-1" x="132" y="312"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -242,7 +243,7 @@
   <interface id="26" language="java" name="com.ssafy.safefood.service.BoardService" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/service/BoardService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="136" y="-34"/>    
+    <position height="-1" width="-1" x="139" y="-36"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -252,7 +253,7 @@
   <class id="27" language="java" name="com.ssafy.safefood.service.EatServiceImpl" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/service/EatServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="836" y="97"/>    
+    <position height="-1" width="-1" x="865" y="67"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -262,7 +263,7 @@
   <interface id="28" language="java" name="com.ssafy.safefood.service.EatService" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/service/EatService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="883" y="-111"/>    
+    <position height="-1" width="-1" x="886" y="-113"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -272,7 +273,7 @@
   <class id="29" language="java" name="com.ssafy.safefood.service.MemberServiceImpl" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/service/MemberServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1406" y="234"/>    
+    <position height="-1" width="-1" x="1409" y="232"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -282,7 +283,7 @@
   <interface id="30" language="java" name="com.ssafy.safefood.service.MemberService" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/service/MemberService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1642" y="267"/>    
+    <position height="-1" width="-1" x="1645" y="265"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -292,7 +293,7 @@
   <class id="31" language="java" name="com.ssafy.safefood.service.FoodServiceImpl" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/service/FoodServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1266" y="863"/>    
+    <position height="-1" width="-1" x="1269" y="861"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -302,7 +303,7 @@
   <interface id="32" language="java" name="com.ssafy.safefood.service.FoodService" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/service/FoodService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="888" y="1033"/>    
+    <position height="-1" width="-1" x="891" y="1031"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -312,7 +313,7 @@
   <class id="33" language="java" name="com.ssafy.safefood.service.JjimServiceImpl" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/service/JjimServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="549" y="861"/>    
+    <position height="-1" width="-1" x="537" y="598"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -322,7 +323,7 @@
   <interface id="34" language="java" name="com.ssafy.safefood.service.JjimService" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/service/JjimService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="549" y="1027"/>    
+    <position height="-1" width="-1" x="351" y="775"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -332,7 +333,7 @@
   <interface id="35" language="java" name="com.ssafy.safefood.service.QnaService" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/service/QnaService.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="2090" y="993"/>    
+    <position height="-1" width="-1" x="2093" y="991"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -342,7 +343,7 @@
   <class id="36" language="java" name="com.ssafy.safefood.service.QnaServiceImpl" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/service/QnaServiceImpl.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1795" y="986"/>    
+    <position height="-1" width="-1" x="1798" y="984"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -352,7 +353,7 @@
   <class id="37" language="java" name="com.ssafy.safefood.contoller.FoodRestController" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/contoller/FoodRestController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="915" y="1563"/>    
+    <position height="-1" width="-1" x="802" y="1440"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -362,7 +363,7 @@
   <class id="38" language="java" name="com.ssafy.safefood.contoller.FoodWebController" project="ssafy-final-project2" 
     file="/ssafy-final-project2/src/main/java/com/ssafy/safefood/contoller/FoodWebController.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="-1" width="-1" x="1887" y="1663"/>    
+    <position height="-1" width="-1" x="1531" y="1496"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
       sort-features="false" accessors="true" visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
