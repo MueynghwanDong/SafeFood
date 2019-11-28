@@ -260,6 +260,12 @@ public class FoodWebController {
 //		HttpSession session = request.getSession();
 		session.setAttribute("foods", f);
 		session.setAttribute("data", "true");
+		Member loginuser = (Member) session.getAttribute("member");
+
+		if (loginuser != null) {
+			String mall = loginuser.getAllergy();
+			session.setAttribute("mallergy", mall);
+		}
 
 		return "foodlist";
 	}
@@ -275,7 +281,7 @@ public class FoodWebController {
 	}
 
 	@GetMapping("/foodview.do")
-	public String FoodView(String code, HttpServletRequest request) {
+	public String FoodView(String code, HttpServletRequest request, HttpSession session) {
 		// 가져오기
 
 		Food f = fs.search(Integer.parseInt(code));
@@ -292,7 +298,7 @@ public class FoodWebController {
 
 		System.out.println(f.getFrequency());
 
-		HttpSession session = request.getSession();
+		// HttpSession session = request.getSession();
 		session.setAttribute("foodview", f);
 
 //		request.setAttribute("foodview", f);
@@ -311,7 +317,7 @@ public class FoodWebController {
 //		request.setAttribute("foodview", f);
 		return "best";
 	}
-	
+
 	@PostMapping("/signup.do")
 	public String Signup(HttpServletRequest request) {
 		String id = request.getParameter("id");

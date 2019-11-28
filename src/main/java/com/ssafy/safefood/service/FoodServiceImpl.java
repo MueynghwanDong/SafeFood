@@ -49,17 +49,16 @@ public class FoodServiceImpl implements FoodService {
 		try {
 
 			food = dao.search(code);
-			StringBuilder sb = new StringBuilder("");
-			for (String allergy : allergys) {
-				if (allergy != null && food.getMaterial().contains(allergy)) {
-					sb.append(allergy + " ");
-				}
-			}
-			food.setAllergy(sb.toString());
+//			StringBuilder sb = new StringBuilder("");
+//			for (String allergy : allergys) {
+//				if (allergy != null && food.getMaterial().contains(allergy)) {
+//					sb.append(allergy + " ");
+//				}
+//			}
+//			food.setAllergy(sb.toString());
 		} catch (RuntimeException e) {
 			logger.error("로그인 정보 받아오기 실패", e);
 		}
-
 		return food;
 	}
 

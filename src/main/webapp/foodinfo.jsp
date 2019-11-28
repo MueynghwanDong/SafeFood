@@ -1,5 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
@@ -9,24 +8,23 @@
 
 <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
 <link type="text/css" href="css/css.css" rel="stylesheet" />
 
 
 <style>
-	
-<!-- 지우지 말 것 -->	
-.widget-chart ul li {
+<!--
+지우지 말 것 -->.widget-chart ul li {
 	width: 31.5%;
 	display: inline-block;
 	padding: 0px;
 }
-.moon{
-	display : block;
-	margin-left:auto; 
-	margin-right:auto;
+
+.moon {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 </style>
 
@@ -37,18 +35,21 @@
 
 	<div id="detail">
 		<div class="container">
-			<h1 class="text-center"><span class="high_light">제품 정보</span></h1>
+			<h1 class="text-center">
+				<span class="high_light">제품 정보</span>
+			</h1>
 			<br>
 			<div class="row">
 				<div class="col-md-3" id="food_img">
 					<img src="${foodview.img}" height="250px" width="250px">
 				</div>
 				<div class="col-md-9">
+					<input type="hidden" name="fname" id="fname" value="${foodview.code}" />
 					<table id="food_desc" class="table">
 						<tbody>
 							<tr>
 								<td width="150px"><b>음식명</b></td>
-								<td id ="foodname">${foodview.name}</td>
+								<td id="foodname">${foodview.name}</td>
 							</tr>
 							<tr>
 								<td><b>성분</b></td>
@@ -60,23 +61,25 @@
 							</tr>
 						</tbody>
 					</table>
-					<input type="hidden" name="fname" id="fname" value="${foodview.code}"/>
-					<input type="number" name="count" id ="count">
-					<input type="button" onClick ="addcount()" class="btn btn-default" value="추가"/> 
-					<input type="button" onClick="addjjim()"class="btn btn-default" value="찜" />
+					<c:if test="${not empty member}">
+						<input type="number" name="count" id="count">
+						<input type="button" onClick="addcount()" class="btn btn-default" value="추가" />
+						<input type="button" onClick="addjjim()" class="btn btn-default" value="찜" />
+					</c:if>
 				</div>
 			</div>
 			<div class="container">
 				<h2 class='high_light text-center'>유사영양상품 리스트</h2>
 				<table class="table">
 					<tbody id="slist">
-						
-					</tbody>				
+
+					</tbody>
 				</table>
 			</div>
-			<br>
-			<br>
-			<h1 class="text-center"><span class="high_light">제품 영양성분</span></h1>
+			<br> <br>
+			<h1 class="text-center">
+				<span class="high_light">제품 영양성분</span>
+			</h1>
 			<br>
 			<hr>
 			<div class="row">
@@ -129,7 +132,7 @@
 							</tr>
 						</tbody>
 					</table>
-			
+
 				</div>
 				<!-- 표들어갈곳 -->
 			</div>
@@ -397,15 +400,13 @@ function updatefreq(){
 	
 </script>
 <!-- 합쳐지고 최소화된 최신 CSS -->
-<link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
 <!-- 부가적인 테마 -->
 <link rel="stylesheet"
 	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
 
 <!-- 합쳐지고 최소화된 최신 자바스크립트 -->
-<script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="search.js"></script>
 </html>

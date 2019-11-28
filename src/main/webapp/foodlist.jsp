@@ -58,7 +58,7 @@
 						<div class="col-md-9">
 							<!-- ?? -->
 							<table id="" class="table">
-								<tr  onclick="javascript:moveFoodInfo('${food.code}')">
+								<tr onclick="javascript:moveFoodInfo('${food.code}')">
 									<td><h3 class="high_light">${food.name}</h3> <span><b>${food.maker}</b></span><span
 										class="fly">&nbsp;${food.frequency}</span><span class="
 glyphicon glyphicon-eye-open fly"></span></td>
@@ -67,12 +67,13 @@ glyphicon glyphicon-eye-open fly"></span></td>
 									<td>${food.material}</td>
 								</tr>
 								<tr>
-								<td>알레르기 주의 성분 : ${food.allergy}</td>
-								<c:if test="${not empty member}">
-								<td id ="allimg"></td>
-								</c:if>
+									<td id="allergy">알레르기 주의 성분 : ${food.allergy}</td>
+
+<%-- 									<c:if test="${not empty member}"> --%>
+<%-- 										<td onclick="check('${food.allergy }')" id="allimg"></td> --%>
+<%-- 									</c:if> --%>
 								</tr>
-								
+
 							</table>
 						</div>
 					</div>
@@ -86,8 +87,30 @@ glyphicon glyphicon-eye-open fly"></span></td>
 </body>
 
 <script>
-/* jshint esversion: 6 */
-// name, maker, material
+function check(allergy){
+	
+let ftr = allergy;
+console.log(allergy);
+let frr = ftr.split(',');
+let str = "${mallergy}";
+let srr = str.split('/');
+let c = false;
+for(var i = 0; i<srr.length;i++){
+	for(var j = 0; j<frr.length;j++){
+		if(srr[i] == frr[j])
+			c = true;
+	}	
+}
+if(c){
+	console.log("SDf");
+	let a = (document.getElementById("allimg"));
+	a.style.backgroundColor = "red";
+}
+	
+}
+// let check = (allergy) =>{
+// 	console.log(allergy);
+// }
 
 let moveFoodInfo = (code) => {
 	location.href="./foodview.do?code="+code;

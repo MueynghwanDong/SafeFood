@@ -72,9 +72,9 @@
 									<tr>
 										<td>${nutri.idx}</td>
 										<td>${nutri.code}</td>
-										<td> <a href="foodview.do?code=${nutri.code}">${nutri.foodname}</a></td>
+										<td><a href="foodview.do?code=${nutri.code}">${nutri.foodname}</a></td>
 										<td>${nutri.amount}</td>
-										<td>${nutri.allergy} ${nutri.check} </td>
+										<td>${nutri.allergy}${nutri.check}</td>
 										<td><input type="button" value="삭제" onclick="deleteeat(${nutri.idx})"></td>
 									</tr>
 								</c:forEach>
@@ -112,14 +112,14 @@
 				{
 					type : 'bar',
 					data : {
-						labels : [ '칼로리', '탄수화물', '단백질', '지방', '당류', '나트륨',
+						labels : [  '탄수화물', '단백질', '지방', '당류', '나트륨',
 								'콜레스테롤', '포화지방산', '트랜스지방' ],
 						datasets : [ {
 							label : names + '님의 총 찜한 정보',
-							data : [ NUTR_CONT1, NUTR_CONT2, NUTR_CONT3,
+							data : [ NUTR_CONT2, NUTR_CONT3,
 									NUTR_CONT4, NUTR_CONT5, NUTR_CONT6,
 									NUTR_CONT7, NUTR_CONT8, NUTR_CONT9 ],
-							backgroundColor : [ 'rgba(255, 99, 132, 1)',
+							backgroundColor : [ 
 									'rgba(54, 162, 235, 1)',
 									'rgba(255, 206, 86, 1)',
 									'rgba(75, 192, 192, 1)',
@@ -128,7 +128,7 @@
 									'rgba(186, 253, 255, 1)',
 									'rgba(255, 224, 224, 1)',
 									'rgba(209, 0, 129, 1)', ],
-							borderColor : [ 'rgba(255, 99, 132, 1)',
+							borderColor : [ 
 									'rgba(54, 162, 235, 1)',
 									'rgba(255, 206, 86, 1)',
 									'rgba(75, 192, 192, 1)',
