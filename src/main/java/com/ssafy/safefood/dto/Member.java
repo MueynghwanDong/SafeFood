@@ -9,6 +9,7 @@ public class Member {
 	private String phone;
 	private String email;
 	private String allergy;
+	private Integer auth;
 	
 	private List<Eat> eatlist;
 	
@@ -33,6 +34,8 @@ public class Member {
 		this.email = email;
 		this.allergy = allergy;
 	}
+
+	
 
 	public String getAllergy() {
 		return allergy;
@@ -147,6 +150,14 @@ public class Member {
 		} else if (!pw.equals(other.pw))
 			return false;
 		return true;
+	}
+
+	public Integer getAuth() {
+		return auth;
+	}
+
+	public void setAuth(Integer auth) {
+		this.auth = auth;
 	}
 
 	

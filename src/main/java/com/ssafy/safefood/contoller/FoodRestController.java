@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -268,4 +270,25 @@ public class FoodRestController {
 		}
 	}
 
+	@GetMapping("/loginid")
+	@ApiOperation(value="로그인 정보 확인")
+	public ResponseEntity<Object> logiinCheck(HttpSession session) throws Exception {
+		log.trace("loginCheck");
+		try {
+			Object result = session.getAttribute("member");
+			if(result!=null){
+				result = (Member)result;
+				return new ResponseEntity<Object>(result, HttpStatus.OK);
+			}else{
+				return new ResponseEntity<Object>(result, HttpStatus.CONFLICT);
+			}
+			
+		} catch (RuntimeException e) {
+			log.error("BoardBUpdate", e);
+			throw e; //
+		}
+			// Member member = new Member("ssafy", "1111", "test", "test", "test", "test");
+			// member.setAuth(0);
+			// return new ResponseEntity<Object>(member, HttpStatus.OK);
+	}
 }

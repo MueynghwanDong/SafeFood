@@ -89,10 +89,11 @@ public class FoodWebController {
 //		return "registerboard";
 //	}
 
-	@GetMapping("/{name}.html")
-	public String page(@PathVariable String name, Model model) {
-		model.addAttribute("pageName", name);
-		return "page";
+	@GetMapping("/qna")
+	public String page(Model model) {
+		// model.addAttribute("pageName", name);
+		log.trace("page html 호출");
+		return "qna";
 	}
 
 	@PostMapping("registerboard.do")
