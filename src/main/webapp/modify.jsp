@@ -75,7 +75,7 @@
 					<ul class="mailbox-attachments clearfix uploadedList">
 					</ul>
 
-					<button type="submit" class="btn btn-warning">CANCEL</button>
+					<input type="button" id ="btn-warning" class="btn btn-warning" value="CANCEL">
 					<c:if test="${member.name == board.writer}">
 					<button type="submit" id="sbutton" class="btn btn-primary">Modify</button>
 						<button type="submit" class="btn btn-danger" id="removeBtn">REMOVE</button>
@@ -115,7 +115,7 @@ $("#word").on("keydown", (key)=>{
 let bno = ${board.bno};
 console.log(bno);
 $(document).ready(function(){	
-	$(".btn-warning").on("click", function(){
+	$("#btn-warning").on("click", function(){
 	  self.location = "/board.do?page=${cri.page}&perPageNum=${cri.perPageNum}"+
 			  "&searchType=${cri.searchType}&keyword=${cri.keyword}";
 	});
