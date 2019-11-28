@@ -49,6 +49,9 @@
 				<tr>
 					<td><span class="high_light"><a href="best.do" />베스트 섭취 정보</span></td>
 				</tr>
+				<tr>
+					<td><span class="high_light"><a href="qna" />QnA</span></td>
+				</tr>
 				<c:if test="${empty member}">
 					<tr>
 						<td><span class="high_light"><a href="login.do" />로그인</span></td>
